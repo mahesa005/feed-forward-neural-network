@@ -3,10 +3,10 @@
 │   └── Laporan_Tugas_Besar_1.pdf
 ├── src/                        # Folder untuk source code [cite: 170]
 │   ├── engine/                 # Core logic untuk bonus Automatic Differentiation
-│   │   └── autograd.py         # Implementasi Autodiff (Bonus 40%) 
-│   ├── layers/
+│   │   └── autodiff.py         # Implementasi Autodiff (Bonus 40%) 
+│   ├── neuron/
 │   │   ├── base.py             # Base class untuk layer
-│   │   ├── linear.py           # Feedforward layer [cite: 19-20]
+│   │   ├── layer.py           # Feedforward layer [cite: 19-20]
 │   │   ├── activations.py      # Sigmoid, ReLU, Tanh, Softmax + 2 Bonus [cite: 21-31, 137]
 │   │   └── normalization.py    # Implementasi RMSNorm (Bonus 10%) [cite: 142]
 │   ├── models/
