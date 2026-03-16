@@ -13,12 +13,24 @@ def mse_loss(y_pred, y_true):
     return (diff * diff).mean()
 
 
+def _clip_tensor(t, lo, hi):
+    """
+    Clip t.data to [lo, hi] while keeping t in the computation graph.
+    Uses a straight-through gradient: upstream grad passes through unchanged.
+    This prevents log(0) without severing the backward pass.
+    """
+    out = Tensor(np.clip(t.data, lo, hi), (t,))
+    def _backward():
+        t.grad += out.grad
+    out._backward = _backward
+    return out
+
+
 def bce_loss(y_pred, y_true):
     """Binary cross-entropy: -mean(y*log(p) + (1-y)*log(1-p))."""
     if not isinstance(y_true, Tensor):
         y_true = Tensor(y_true, requires_grad=False)
-    # clip predictions to avoid log(0) or log(negative)
-    p = Tensor(np.clip(y_pred.data, _EPS, 1.0 - _EPS), requires_grad=False)
+    p = _clip_tensor(y_pred, _EPS, 1.0 - _EPS)
     return -(y_true * p.log() + (1.0 - y_true) * (1.0 - p).log()).mean()
 
 
@@ -26,6 +38,5 @@ def cce_loss(y_pred, y_true):
     """Categorical cross-entropy: -mean(sum(y_true * log(y_pred), axis=-1))."""
     if not isinstance(y_true, Tensor):
         y_true = Tensor(y_true, requires_grad=False)
-    # clip predictions
-    p = Tensor(np.clip(y_pred.data, _EPS, 1.0), requires_grad=False)
+    p = _clip_tensor(y_pred, _EPS, 1.0)
     return -(y_true * p.log()).sum(axis=-1).mean()
