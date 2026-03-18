@@ -62,11 +62,6 @@ Isi `requirements.txt`:
 
 ```
 numpy
-pandas
-matplotlib
-scikit-learn
-tqdm
-jupyter
 ```
 
 ---
