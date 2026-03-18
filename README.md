@@ -17,33 +17,30 @@ Model diuji menggunakan dataset **Global Student Placement & Salary** (`datasetm
 ```
 .
 ├── data/
-│   └── datasetml_2026.csv          # Dataset utama (10.000 sampel)
+│   └── datasetml_2026.csv          
 ├── docs/
-│   └── Laporan_Tugas_Besar_1.pdf   # Laporan lengkap
+│   └── Laporan_Tugas_Besar_1.pdf   
 ├── src/
 │   ├── engine/
-│   │   └── autodiff.py             # Kelas Tensor & Automatic Differentiation (Bonus 40%)
+│   │   └── autodiff.py         
 │   ├── neuron/
-│   │   ├── base.py                 # Abstract base class Layer
-│   │   ├── layer.py                # Dense (fully connected) layer
-│   │   ├── activations.py          # Linear, ReLU, Sigmoid, Tanh, Softmax,
-│   │   │                           #   ELU, LeakyReLU (Bonus 5%)
-│   │   └── normalization.py        # RMSNorm (Bonus 10%)
+│   │   ├── base.py               
+│   │   ├── layer.py               
+│   │   ├── activations.py                      
+│   │   └── normalization.py        
 │   ├── models/
-│   │   └── ffnn.py                 # Kelas utama FFNN
+│   │   └── ffnn.py                 
 │   ├── optim/
-│   │   ├── loss.py                 # MSE, BCE, CCE
-│   │   ├── gradient_descent.py     # SGD + regularisasi L1/L2
-│   │   ├── adam.py                 # Adam optimizer (Bonus 40%)
-│   │   └── initializers.py         # Zero, Uniform, Normal,
-│   │                               #   Xavier (uniform & normal),
-│   │                               #   He (uniform & normal) (Bonus 5%)
+│   │   ├── loss.py                 
+│   │   ├── gradient_descent.py     
+│   │   ├── adam.py                 
+│   │   └── initializers.py         
+│   │                                                       
 │   ├── utils/
-│   │   ├── preprocessing.py        # Load & preprocessing dataset
-│   │   └── visualization.py        # Plot loss curves & distribusi bobot
-│   ├── train.py                    # Training loop (mini-batch, verbose, history)
-│   └── main.ipynb                  # Notebook eksperimen & analisis
-├── README.md
+│   │   ├── preprocessing.py         
+│   │   └── visualization.py      
+│   ├── train.py                  
+│   └── main.ipynb                  
 └── requirements.txt
 ```
 
